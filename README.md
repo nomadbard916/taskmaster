@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Introduction:
 
-Things you may want to cover:
+For actual site:
 
-* Ruby version
+For wireframe, please see the Figma link below. https://www.figma.com/file/RasskNltaAxbe5bGspWlxEEe/taskmaster-wireframe?node-id=0%3A1
 
-* System dependencies
+---
 
-* Configuration
+Quick Start:
 
-* Database creation
+---
 
-* Database initialization
+Project Specs:
 
-* How to run the test suite
+---
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Definition of "User":

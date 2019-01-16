@@ -1,0 +1,3 @@
+web: bundle exec rails s -p $PORT
+watcher: ./bin/webpack-dev-server --hot
+guard: bundle exec guard
