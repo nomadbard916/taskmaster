@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+footer {
+    background-color: rgba(194, 192, 202, 0.863);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
