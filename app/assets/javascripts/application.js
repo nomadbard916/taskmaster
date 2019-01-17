@@ -17,4 +17,5 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require bootstrap/dropdown
+//= require popper
 //= require_tree .

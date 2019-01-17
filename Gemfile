@@ -40,6 +40,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # Bootstrap
 gem 'bootstrap-sass'
+gem 'bootstrap', '~> 4.2.1'
+gem 'sprockets-rails'
 gem 'jquery-rails'
 
 gem 'htmlbeautifier'
