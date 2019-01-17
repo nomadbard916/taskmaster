@@ -1,0 +1,74 @@
+<div class="container">
+    <%= form_for @task, url: action_name ="new" ? tasks_path : edit_task_path   do |f| %>
+    <fieldset>
+
+
+        <div id="content" class="form-group row ">
+            <h3 class="w-100">
+                <% if controller.action_name == "new"%>
+                <%= f.label :content, 'New Task', class: "col-sm-2 col-form-label" %>
+                <% else %>
+                <%= f.label :content, 'Edit Task', class: "col-sm-2 col-form-label" %>
+                <%end%>
+            </h3>
+
+
+            <span class="col-md-6">
+                <%= f.text_area :content, placeholder: "Maximum 256 characters", class:"form-control" %>
+            </span>
+        </div>
+
+        <div id="deadline" class="form-group row">
+            <div class="w-100">
+                <%= f.label :deadline, class: "col col-form-label" %>
+            </div>
+
+            <div class="col-4">
+                <%= f.datetime_select :deadline, class:"form-control " %>
+            </div>
+
+
+
+        </div>
+
+        <div id="priority" class="form-group row">
+            <div class=" col w-100">
+                <%= f.label :priority, class: "col-form-label" %>
+
+                <span>&nbsp &nbsp</span>
+
+                <%= f.select :priority, [ 'Normal', 'High', 'Low'], class:"form-control" %>
+
+                <span>&nbsp &nbsp</span>
+
+
+                <%= f.label :status, class: "col-form-label" %>
+                <span>&nbsp &nbsp</span>
+                <%= f.select :status, [ 'Working', 'Pending', 'Finished'], class:"form-control"%>
+            </div>
+        </div>
+        <hr>
+
+        <!-- Neglect finished time -->
+        <div id="action" class="form-group row ">
+            <div class="col">
+                <span class="pull-right">
+                    <button class="btn btn-secondary">
+                        <%= link_to 'Cancel', root_path %></button>
+
+                    <%= f.submit "Save", class:"btn btn-primary"%>
+
+
+                    <!--TODO: button_to "Delete Task" if controller.action_name == "destroy"
+                    
+                    <button type="button" class="btn btn-danger float-right">Delete Task</button>
+                    -->
+
+                </span>
+            </div>
+
+        </div>
+
+        <% end %>
+    </fieldset>
+</div>

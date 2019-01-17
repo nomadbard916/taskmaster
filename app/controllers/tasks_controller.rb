@@ -1,6 +1,18 @@
 class TasksController < ApplicationController
+    before_action :find_task, only: [:show, :edit, :update, :destroy, :finish]
+
+
     def index
-        @tasks = Task.all
+        # TODO: Determine admin, user and visitor
+        # if session[:logged_in] && session[:user] == "admin"
+        # elsif session[:logged_in]
+        # else
+        #   render "Join us!"
+        # end
+        
+        @tasks = Task
+                .all
+                .order(deadline: :asc)
     end
 
     def new
@@ -8,10 +20,13 @@ class TasksController < ApplicationController
     end
     
     def create
-        @object = Object.new(params[:object])
-        if @object.save
-          flash[:success] = "Object successfully created"
-          redirect_to @object
+        @task = Task.new(task_params)
+        #FIXME: need to put ".save" to model
+        @task.save
+        
+        if @task.save
+          flash[:success] = "Task successfully created"
+          redirect_to root_path
         else
           flash[:error] = "Something went wrong"
           render 'new'
@@ -19,11 +34,11 @@ class TasksController < ApplicationController
     end
 
     def show
-        @task = Task.find()
+        
     end
 
     def edit
-
+        
     end
 
 
@@ -48,6 +63,25 @@ class TasksController < ApplicationController
             flash[:error] = 'Something went wrong'
             redirect_to tasks_url
         end
+    end
+
+    #TODO: finish method
+
+    def finish
+    end
+
+    private
+
+    def task_params
+        params
+            .require(:task)
+            .permit(
+                :content, :deadline, :priority, :status
+            )
+    end
+
+    def find_task
+        @task = Task.find(params[:id])
     end
     
     

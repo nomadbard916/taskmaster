@@ -10,32 +10,37 @@
 
 <body>
   <div class="container">
-    <!-- 
-    TODO: add actual tag links dynamically 
-    FIXME: why it's not working? maybe it's about JS or CSS for Bootstrap?? 
-    -->
 
-    <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
-        ALL TASKS
-      </button>
+    <div class="row justify-content-between float-right">
 
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">ALL TASKS</a>
-        <a class="dropdown-item" href="#">TAGS</a>
 
+
+      <!-- FIXME: should actually be collection_select -->
+      <div class="">
+        <select>
+          <option value="" hidden="">Sort by</option>
+          <option value="">Deadline</option>
+          <option value="">Priority</option>
+          <option value="">Status</option>
+          <option value="">Finished Time</option>
+        </select>
       </div>
+
+
+
+
+
+
     </div>
-
-    <!--TODO: should actually be form_for-->
-    <form action="">
-    </form>
+    <br>
+    <br>
 
 
 
 
 
+
+    <%= render 'index_form', tasks: @tasks %>
   </div>
 
 

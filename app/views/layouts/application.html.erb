@@ -6,46 +6,71 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
-  <%= stylesheet_link_tag 'application', media: 'all',
-          'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track':
-            'reload' %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 
 
 <body>
-  <nav class="navbar">
+  <nav class="navbar ">
     <div class="container ">
 
-
-      <span id="brand" class="navbar-brand">
-        <a href="/">TaskMaster</a>
-
-      </span>
-
-
-
-
-
-      <div id="util">
-
-        <span id="search" class="flow-left">
-          <!--FIXME: make it form_for with text_field and submit (hidden)-->
-          <input type="text" size="25" value="Search your tasks here">
-        </span>
-        <span>
+      <!-- Left part -->
+      <div>
+        <span id="brand" class="navbar-brand">
+          <a href="/">TaskMaster</a>
 
         </span>
+
+
+        <!--FIXME: make it form_for with text_field and submit (hidden)-->
+        <input type="text" size="30" placeholder="Type and press 'Enter' to search tasks" class="form-control-sm">
+
+        <!--TODO: Put flash here-->
+
+
+
+
+      </div>
+
+
+
+
+      <!-- Right part-->
+      <div id="util" class="float-right">
+
+
+        <!-- 
+        TODO: add actual tag links dynamically 
+        FIXME: why it's not working? maybe it's about JS or CSS for Bootstrap?? 
+        Or just implement with collection_select?
+         -->
+
+        <span class="dropdown" data-turbolinks="false">
+          <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+            ALL TASKS
+          </button>
+
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">ALL TASKS</a>
+            <a class="dropdown-item" href="#">TASK TAGS</a>
+
+          </div>
+        </span>
+
+
         <span id="account">
 
           <button class="btn btn-link">
-            <%= link_to 'Register', '#' %>
+            <%= link_to 'Sign up', '#' %>
           </button>
 
           <button type="button" class="btn btn-link">
             <%= link_to 'Log In', '#' %>
           </button>
+
+
         </span>
       </div>
 
@@ -59,7 +84,9 @@
 
     </div>
 
+
   </nav>
+  <hr>
 
 
 
@@ -67,7 +94,7 @@
   <%= yield %>
 </body>
 
-<footer>
+<footer class="footer navbar-static-bottom">
   <div class="container">
     <div class="row align-items-center justify-content-between">
       <span id="copyright" class="">

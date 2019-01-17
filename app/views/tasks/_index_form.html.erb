@@ -1,0 +1,51 @@
+<!-- Tasks info -->
+<div class="row text-dark bg-secondary">
+    <span id="content" class="col-6">Task</span>
+    <span id="deadline" class="col-3">Deadline</span>
+    <div id="priority" class="col-1">Priority</div>
+    <div id="status" class="col-2">Status</div>
+
+</div>
+<hr>
+
+<!--Task items -->
+<% tasks.each do |t|%>
+<div class="row">
+    <div id="content" class="col-6">
+        <%= t.content%>
+
+        <span id="buttons" class="float-right">
+
+            <!--TODO:implement buttons -->
+            <button class="btn btn-primary">Edit</button>
+            <button class="btn btn-success">Finished</button>
+        </span>
+    </div>
+
+    <div id="deadline" class="col-3">
+        <%= t.deadline%>
+    </div>
+
+    <div id="priority" class="col-1">
+        <%= t.priority %>
+    </div>
+
+    <div id="status" class="col-2">
+        <p>
+            <%= t.status %>
+        </p>
+
+        <% if t.finished %>
+        <p id="finished-time" class="text-success">
+            Finished time:
+            <br>
+            <%= t.finished%>
+        </p>
+        <% end %>
+
+    </div>
+</div>
+<hr>
+
+<!--TODO: Pagination-->
+<% end %>
