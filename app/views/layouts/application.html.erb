@@ -27,7 +27,17 @@
         <!--FIXME: make it form_for with text_field and submit (hidden)-->
         <input type="text" size="30" placeholder="Type and press 'Enter' to search tasks" class="form-control-sm">
 
-        <!--TODO: Put flash here-->
+        <!--TODO: check flash-->
+        <% if flash[:success] %>
+        <span class="text-success">
+          <%= flash[:success]%>
+        </span>
+        <% elsif flash[:error] %>
+        <span class="text-danger">
+          <%= flash[:error]%>
+        </span>
+        <%else%>
+        <%end%>
 
 
 

@@ -34,19 +34,20 @@ class TasksController < ApplicationController
     end
 
     def show
-        
+        # Just show content on index, no need to show on another page
     end
 
+    
     def edit
         
     end
 
 
     def update
-        @task = Task.find(params[:id])
-        if @task.update_attributes(params[:object])
+        
+        if @task.update_attributes(task_params)
           flash[:success] = "Task was successfully updated"
-          redirect_to @task
+          redirect_to root_path
         else
           flash[:error] = "Something went wrong"
           render 'edit'
@@ -55,7 +56,7 @@ class TasksController < ApplicationController
 
     
     def destroy
-        @task = Task.find(params[:id])
+        
         if @task.destroy
             flash[:success] = 'Task was successfully deleted.'
             redirect_to tasks_url
@@ -65,7 +66,7 @@ class TasksController < ApplicationController
         end
     end
 
-    #TODO: finish method
+    #TODO: "finish" method
 
     def finish
     end

@@ -1,5 +1,5 @@
 <div class="container">
-    <%= form_for @task, url: action_name ="new" ? tasks_path : edit_task_path   do |f| %>
+    <%= form_for @task, url: action_name =="new" ? tasks_path : task_path(@task)   do |f| %>
     <fieldset>
 
 
@@ -59,10 +59,16 @@
                     <%= f.submit "Save", class:"btn btn-primary"%>
 
 
-                    <!--TODO: button_to "Delete Task" if controller.action_name == "destroy"
-                    
-                    <button type="button" class="btn btn-danger float-right">Delete Task</button>
-                    -->
+
+
+
+
+                    <% if controller.action_name =="edit" %>
+
+
+                    <%= button_to "Delete Task", @task, method: :delete, class: "btn btn-danger float-right", data: {confirm: "Are you sure? This can't be undone."} %>
+
+                    <%end%>
 
                 </span>
             </div>
