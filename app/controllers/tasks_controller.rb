@@ -13,28 +13,28 @@ class TasksController < ApplicationController
         
         if params[:condition].blank?
             @tasks = Task
-                .all
+                .page(params[:page]).per(10)
                 .order(deadline: :asc)
         
         elsif params[:condition] == "content"
             @tasks = Task
-                .all
+                .page(params[:page]).per(10)
                 .order(content: :asc)
         elsif params[:condition] ==  "deadline"
             @tasks = Task
-                .all
+                .page(params[:page]).per(10)
                 .order(deadline: :asc)
         elsif params[:condition] ==  "priority"
             @tasks = Task
-                .all
+                .page(params[:page]).per(10)
                 .order(priority: :asc)
         elsif params[:condition] ==  "status"
             @tasks = Task
-                .all
+                .page(params[:page]).per(10)
                 .order(status: :asc)
         else
             @tasks = Task
-                .all
+                .page(params[:page]).per(10)
                 .order(deadline: :asc)
         end
                 
