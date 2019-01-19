@@ -11,12 +11,13 @@
 <body>
   <div class="container">
 
-    <div class="row justify-content-between float-right">
+    <div class="row justify-content-between ">
 
 
 
       <!-- FIXME: should actually be collection_select -->
       <div class="">
+        <!--
         <select>
           <option value="" hidden="">Sort by</option>
           <option value="">Deadline</option>
@@ -24,6 +25,16 @@
           <option value="">Status</option>
           <option value="">Finished Time</option>
         </select>
+        -->
+        <span class="">Sort by:</span>
+        <br>
+        <%= link_to 'Content', tasks_path(condition: "Content") %>
+        <%= link_to 'Deadline', tasks_path(condition: "deadline") %>
+        <%= link_to 'Priority', tasks_path(condition: "priority") %>
+        <%= link_to 'Status', tasks_path(condition: "status") %>
+
+
+
       </div>
 
 
@@ -32,6 +43,7 @@
 
 
     </div>
+    <br>
     <br>
     <br>
 

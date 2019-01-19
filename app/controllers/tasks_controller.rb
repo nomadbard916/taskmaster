@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
     before_action :find_task, only: [:show, :edit, :update, :destroy, :finish]
+    
 
 
     def index
@@ -10,9 +11,37 @@ class TasksController < ApplicationController
         #   render "Join us!"
         # end
         
-        @tasks = Task
+        if params[:condition].blank?
+            @tasks = Task
                 .all
                 .order(deadline: :asc)
+        
+        elsif params[:condition] == "content"
+            @tasks = Task
+                .all
+                .order(content: :asc)
+        elsif params[:condition] ==  "deadline"
+            @tasks = Task
+                .all
+                .order(deadline: :asc)
+        elsif params[:condition] ==  "priority"
+            @tasks = Task
+                .all
+                .order(priority: :asc)
+        elsif params[:condition] ==  "status"
+            @tasks = Task
+                .all
+                .order(status: :asc)
+        else
+            @tasks = Task
+                .all
+                .order(deadline: :asc)
+        end
+                
+
+        # @tasks = Task
+        #         .all
+        #         .order(deadline: :asc)
     end
 
     def new
@@ -20,15 +49,15 @@ class TasksController < ApplicationController
     end
     
     def create
-        @task = Task.new(task_params)
+        @task = Task.create(task_params)
         #FIXME: need to put ".save" to model
-        @task.save
+        
         
         if @task.save
           flash[:success] = "Task successfully created"
           redirect_to root_path
         else
-          flash[:error] = "Something went wrong"
+          flash[:error] = "Task content must exist and can't be longer than 256 characters."
           render 'new'
         end
     end
@@ -86,6 +115,8 @@ class TasksController < ApplicationController
     def find_task
         @task = Task.find(params[:id])
     end
+
+    
     
     
     
