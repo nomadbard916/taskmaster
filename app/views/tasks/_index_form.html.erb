@@ -1,19 +1,6 @@
-<!-- Tasks info -->
-<div class="row text-dark bg-secondary">
-    <span id="content" class="col-6">Task</span>
-    <span id="deadline" class="col-3">Deadline</span>
-    <div id="priority" class="col-1">Priority</div>
-    <div id="status" class="col-2">Status</div>
-
-</div>
-<hr>
-
-<% if tasks.blank? %>
-<p class="text-center">
-    <%= "Hey, let's add some task by clicking the '+ New Task' below!" %>
-</p>
-<%end%>
-
+<% if tasks.nil? %>
+<% return %>
+<% else %>
 <!--Task items -->
 <% tasks.each do |t|%>
 
@@ -64,7 +51,9 @@
 <!--TODO: Pagination-->
 <% end %>
 
-<%= paginate   @tasks %>
+<%= paginate   tasks %>
+
+<%end %>
 
 <br>
 <br>

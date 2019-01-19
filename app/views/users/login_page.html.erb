@@ -1,6 +1,6 @@
 <div class="container">
-    <h1>Sign up</h1>
-    <%= form_for @user do |f| %>
+    <h1>Log in</h1>
+    <%= form_for :login_data, url: login_path do |f| %>
 
 
     <fieldset>
@@ -19,25 +19,14 @@
 
 
         </div>
-        <p class="text-info">Note: An email address can only be registered once.</p>
+
         <br>
 
-        <div class="row" id="name">
-            <p>
-                <%= f.label :name, "How do we call you?", class: "col col-form-label" %>
-            </p>
-            <br>
-            <p>
-                <%= f.text_field :name, class:"form-control"%>
 
-            </p>
-
-
-        </div>
 
         <div class="row" id="password">
             <p>
-                <%= f.label :password, "Please enter a password", class: "col col-form-label" %>
+                <%= f.label :password, "Please enter your password", class: "col col-form-label" %>
             </p>
             <br>
             <p>
@@ -51,7 +40,17 @@
 
         </div>
 
-        <%= f.submit "Submit", class: "btn btn-primary" %>
+        <div class="row">
+            <p>
+                <span>&nbsp&nbsp</span>
+
+                <%= f.submit "Submit", class: "btn btn-primary" %>
+            </p>
+            <br>
+
+
+
+        </div>
 
 
 
@@ -60,9 +59,17 @@
 
     </fieldset>
 
+    <br>
+    <br>
+
+    <p>New user and wonna create your own tasks?
+        <%= link_to 'Sign up now!', new_user_path %>
+    </p>
+
 
 
 
     <% end %>
+
 
 </div>

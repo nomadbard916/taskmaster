@@ -5,9 +5,13 @@ Rails.application.routes.draw do
 
   resources :tasks
 
-  resources :users
+  resources :users do
+    
+  end
 
-  get 'users/login', to: "users#login"
+  get '/login', to: "users#login_page"
+  post '/login', to: "users#login"
+  get '/logout', to: "users#logout"
 
   
 

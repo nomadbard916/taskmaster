@@ -71,14 +71,31 @@
 
 
         <span id="account">
-
+          <!-- Sign up, should disapper when logged in-->
+          <% if session[:user_id] %>
+          <% "" %>
+          <% else %>
           <button class="btn btn-link">
             <%= link_to 'Sign up', new_user_path %>
           </button>
+          <% end %>
 
+
+
+
+          <!-- Login, should switch to "Log out" when logged-in -->
+          <% if session[:user_id] ==  nil %>
           <button type="button" class="btn btn-link">
-            <%= link_to 'Log In', '#' %>
+            <%= link_to 'Log In', login_path %>
           </button>
+          <!-- user == visitor -->
+          <% else %>
+          <button type="button" class="btn btn-link">
+            <%= link_to 'Log Out', logout_path %>
+          </button>
+
+
+          <%end%>
 
 
         </span>
@@ -112,11 +129,17 @@
         <%=Time.current.year%>, TaskMaster
       </span>
 
+      <% if session[:user_id].nil? %>
+      <%= ""%>
+      <% else %>
       <span class="pull-right">
         <button class="btn btn-primary">
           <%= link_to '+ New Task', new_task_path, class: "text-white" %>
         </button>
       </span>
+      <% end%>
+
+
     </div>
   </div>
 </footer>
