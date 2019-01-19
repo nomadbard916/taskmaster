@@ -1,5 +1,5 @@
 <div class="container">
-    <%= form_for @task, url: action_name =="new" ? tasks_path : task_path(@task)   do |f| %>
+    <%= form_for @task  do |f| %>
     <fieldset>
 
 
@@ -42,9 +42,9 @@
                 <span>&nbsp &nbsp</span>
 
 
-                <%= f.label :status, class: "col-form-label" %>
+                <%= f.label :status, class: "col-form-label text-center" %>
                 <span>&nbsp &nbsp</span>
-                <%= f.select :status, [ 'Working', 'Pending', 'Finished'], class:"form-control"%>
+                <%= f.select :status, [ 'Working', 'Pending', 'Finished'], class:"form-control text-center"%>
             </div>
         </div>
         <hr>
@@ -54,7 +54,8 @@
             <div class="col">
                 <span class="pull-right">
                     <button class="btn btn-secondary">
-                        <%= link_to 'Cancel', root_path %></button>
+                        <%= link_to 'Cancel', root_path %>
+                    </button>
 
                     <%= f.submit "Save", class:"btn btn-primary"%>
 
@@ -63,18 +64,18 @@
 
 
 
-                    <% if controller.action_name =="edit" %>
-
-
-                    <%= button_to "Delete Task", @task, method: :delete, class: "btn btn-danger float-right", data: {confirm: "Are you sure? This can't be undone."} %>
-
-                    <%end%>
-
                 </span>
             </div>
 
         </div>
 
-        <% end %>
     </fieldset>
+    <% end %>
+    <!-- Conditionally show "Delete Task" button -->
+    <% if controller.action_name =="edit" %>
+
+
+    <%= button_to "Delete Task", @task, method: :delete, class: "btn btn-danger float-right", data: {confirm: "Are you sure? \nThis can't be undone."} %>
+
+    <%end%>
 </div>

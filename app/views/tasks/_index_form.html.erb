@@ -8,8 +8,17 @@
 </div>
 <hr>
 
+<% if tasks.all.size == 0 %>
+<p class="text-center">
+    <%= "Hey, let's add some task by clicking the '+ New Task' below!" %>
+</p>
+<%end%>
+
 <!--Task items -->
 <% tasks.each do |t|%>
+
+
+
 <div class="row">
     <div id="content" class="col-6">
         <%= t.content%>
