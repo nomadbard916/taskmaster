@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
-    before_action :find_task, only: [:edit, :update, :destroy, :finish]
-    before_action :current_user, only: [:index, :new, :create, :update, :destroy, :finish]
+    before_action :find_task, only: [:edit, :update, :destroy]
+    before_action :current_user, only: [:index, :new, :create, :update, :destroy]
 
     
 
@@ -18,16 +18,14 @@ class TasksController < ApplicationController
         else
             
 
-            if params[:condition].blank?
-            @tasks = user_task.order(deadline: :asc)
-        
-            elsif params[:condition] == "content"
+            case params[:condition]
+            when "content"
                 @tasks = user_task.order(content: :asc)
-            elsif params[:condition] ==  "deadline"
+            when  "deadline"
                 @tasks = user_task.order(deadline: :asc)
-            elsif params[:condition] ==  "priority"
+            when  "priority"
                 @tasks = user_task.order(priority: :asc)
-            elsif params[:condition] ==  "status"
+            when  "status"
                 @tasks = user_task.order(status: :asc)
             else
                 @tasks = user_task.order(deadline: :asc)
@@ -36,10 +34,7 @@ class TasksController < ApplicationController
         end
 
 
-        
-                
 
-        
     end
 
     def new
@@ -71,7 +66,12 @@ class TasksController < ApplicationController
 
 
     def update
-        
+        # if task_params[:status] = "finished"
+        #     @task.update_attribute(finished_at: Time.now)
+        # else
+        #     @task.update_attribute(finished_at: nil)
+        # end
+
         if @task.update_attributes(task_params)
           flash[:success] = "Task was successfully updated"
           redirect_to root_path
@@ -95,10 +95,7 @@ class TasksController < ApplicationController
         end
     end
 
-    #TODO: "finish" method
-
-    def finish
-    end
+    
 
     private
 

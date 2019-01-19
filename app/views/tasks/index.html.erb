@@ -15,17 +15,9 @@
 
 
 
-      <!-- FIXME: should actually be collection_select -->
+
       <div id="sorter">
-        <!--
-        <select>
-          <option value="" hidden="">Sort by</option>
-          <option value="">Deadline</option>
-          <option value="">Priority</option>
-          <option value="">Status</option>
-          <option value="">Finished Time</option>
-        </select>
-        -->
+
         <span class="">Sort by:</span>
         <br>
         <%= link_to 'Task Content', tasks_path(condition: "Content") %> |
@@ -50,30 +42,7 @@
 
 
     <!-- Tasks info -->
-    <div class="row text-dark bg-secondary">
-      <span id="content" class="col-6">Task</span>
-      <span id="deadline" class="col-3">Deadline</span>
-      <div id="priority" class="col-1">Priority</div>
-      <div id="status" class="col-2">Status</div>
-
-    </div>
-    <hr>
-
-    <% if @tasks.blank? %>
-    <% if session[:user_id].nil? %>
-    <p class="text-center">
-      <%= "Hey, so glad you are here to keep tasks organized. 
-    " %>
-      <br>
-      <%= "Please login at upper-right to start using this wonderful companion!" %>
-
-    </p>
-    <% else %>
-    <p class="text-center">
-      <%= "Hey, let's add some task by clicking the '+ New Task' below!" %>
-    </p>
-    <% end %>
-    <%end%>
+    <%= render 'tasks_info' %>
 
 
     <%= render 'index_form', tasks: @tasks %>
