@@ -1,0 +1,67 @@
+<div class="container">
+    <%= form_for @user do |f| %>
+
+
+    <fieldset>
+        <div class="row" id="email">
+            <p>
+                <%= f.label :email, "Please enter your email", class: "col col-form-label" %>
+            </p>
+            <br>
+
+            <p>
+                <%= f.text_field :email, class:"form-control"%>
+
+            </p>
+
+
+
+
+        </div>
+        <p class="text-info">Note: An email address can only be registered once.</p>
+        <br>
+
+        <div class="row" id="name">
+            <p>
+                <%= f.label :name, "How do we call you?", class: "col col-form-label" %>
+            </p>
+            <br>
+            <p>
+                <%= f.text_field :name, class:"form-control"%>
+
+            </p>
+
+
+        </div>
+
+        <div class="row" id="password">
+            <p>
+                <%= f.label :password, "Please enter password", class: "col col-form-label" %>
+            </p>
+            <br>
+            <p>
+                <%= f.text_field :password, class:"form-control"%>
+
+            </p>
+
+
+
+
+
+        </div>
+
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+
+
+
+
+
+
+    </fieldset>
+
+
+
+
+    <% end %>
+
+</div>
