@@ -24,6 +24,11 @@
         <%= link_to 'Deadline', tasks_path(condition: "deadline") %> |
         <%= link_to 'Priority', tasks_path(condition: "priority") %> |
         <%= link_to 'Status', tasks_path(condition: "status") %>
+        <% if @any_finished %>
+        <%= link_to ' | Finished Time', tasks_path(condition: "finished_at") %>
+        <% end%>
+
+
 
 
 

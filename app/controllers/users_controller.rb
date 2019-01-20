@@ -58,7 +58,9 @@ class UsersController < ApplicationController
 
         if user && user.password == login_params[:password]
             if user.admin
-
+                #TODO: implement admin login
+                session[:user_id] = user.id
+                redirect_to admin_path
             else
             session[:user_id] = user.id
 

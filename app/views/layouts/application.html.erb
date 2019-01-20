@@ -58,7 +58,7 @@
           <!-- Sign up, should switch to "edit account" when logged in-->
           <% if session[:user_id] %>
           <button class="btn btn-link">
-            <%= link_to 'Edit Account', edit_user_path(@user) %>
+            <%= link_to 'Edit Account', edit_user_path(id: session[:user_id]) %>
           </button>
           <% else %>
           <button class="btn btn-link">

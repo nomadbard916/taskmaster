@@ -13,11 +13,14 @@ class TasksController < ApplicationController
         #   render "Join us!"
         # end
         
+        # Determine if user is logged in
         if session[:user_id].nil?
             @tasks = nil
         else
             
+            
 
+            # Determine how tasks are sorted
             case params[:condition]
             when "content"
                 @tasks = user_task.order(content: :asc)
@@ -27,9 +30,16 @@ class TasksController < ApplicationController
                 @tasks = user_task.order(priority: :asc)
             when  "status"
                 @tasks = user_task.order(status: :asc)
+            when "finished_at"
+                 @tasks = user_task.order(finished_at: :asc)
             else
                 @tasks = user_task.order(deadline: :asc)
             end
+
+            # Condition for if any task is finished
+            @any_finished = @tasks.find_by(status: "Finished")
+
+            
 
         end
 
@@ -66,11 +76,13 @@ class TasksController < ApplicationController
 
 
     def update
-        # if task_params[:status] = "finished"
-        #     @task.update_attribute(finished_at: Time.now)
-        # else
-        #     @task.update_attribute(finished_at: nil)
-        # end
+        if task_params[:status] = "finished"
+            @task.update_attributes(finished_at: Time.now)
+        else
+            @task.update_attributes(finished_at: nil)
+        end
+
+
 
         if @task.update_attributes(task_params)
           flash[:success] = "Task was successfully updated"
