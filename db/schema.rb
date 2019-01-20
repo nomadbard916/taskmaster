@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_19_183742) do
+ActiveRecord::Schema.define(version: 2019_01_20_093250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2019_01_19_183742) do
     t.string "email"
     t.string "name"
     t.string "password"
+    t.boolean "admin"
   end
 
   add_foreign_key "tasks", "users"
