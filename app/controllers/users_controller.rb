@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
+    before_action :find_user, only: [:edit, :update]
+    
     def new
         @user = User.new
     end
 
     def create
-        @user = User.new(user_params)
+        @user = User.create(user_params)
         if @user.save
           flash[:success] = "User successfully created, please login."
           redirect_to root_path
@@ -13,6 +15,24 @@ class UsersController < ApplicationController
           render 'new'
         end
     end
+
+    def edit
+        
+    end
+
+    def update
+        
+        @user.update_attributes(user_params)
+
+        if @user.update_attributes(user_params)
+          flash[:success] = "Account was successfully updated"
+          redirect_to root_path
+        else
+          flash[:error] = "Something went wrong"
+          render 'edit'
+        end
+    end
+    
 
     def login_page
 
@@ -51,6 +71,10 @@ class UsersController < ApplicationController
 
     def login_params
         params.require(:login_data).permit(:email, :password)
+    end
+
+    def find_user
+        @user = User.find(params[:id])
     end
     
     

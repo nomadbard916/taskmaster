@@ -5,9 +5,7 @@ Rails.application.routes.draw do
 
   resources :tasks
 
-  resources :users do
-    
-  end
+  resources :users
 
   get '/login', to: "users#login_page"
   post '/login', to: "users#login"
