@@ -18,8 +18,18 @@
 
       <!-- Left part -->
       <div>
+
+
+
+
         <span id="brand" class="navbar-brand">
+          <!-- Switch admin mode -->
+          <% if session[:admin] %>
+          <a href="/admin">TMAdmin</a>
+          <%else %>
           <a href="/">TaskMaster</a>
+
+          <%end%>
 
         </span>
 
@@ -115,12 +125,21 @@
         <%=Time.current.year%>, TaskMaster
       </span>
 
+      <!-- Conditionally show action button -->
       <% if session[:user_id].nil? %>
       <%= ""%>
       <% else %>
+
       <span class="pull-right">
         <button class="btn btn-primary">
+          <!-- Conditionally switch action for admin and user -->
+          <% if session[:admin]%>
+          <%= link_to '+ New User', new_user_path, class: "text-white" %>
+
+          <% else%>
           <%= link_to '+ New Task', new_task_path, class: "text-white" %>
+
+          <%end%>
         </button>
       </span>
       <% end%>

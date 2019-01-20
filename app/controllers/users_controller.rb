@@ -8,8 +8,13 @@ class UsersController < ApplicationController
     def create
         @user = User.create(user_params)
         if @user.save
-          flash[:success] = "User successfully created, please login."
-          redirect_to login_path
+            if session[:admin]
+                flash[:success] = "User successfully created."
+                redirect_to admin_path
+            else
+                flash[:success] = "User successfully created, please login."
+                redirect_to login_path
+            end
         else
           flash[:error] = "Please properly enter your info and try again"
           render 'new'
@@ -60,6 +65,7 @@ class UsersController < ApplicationController
             if user.admin
                 #TODO: implement admin login
                 session[:user_id] = user.id
+                session[:admin] = true
                 redirect_to admin_path
             else
             session[:user_id] = user.id
@@ -79,6 +85,8 @@ class UsersController < ApplicationController
 
     def logout
         session[:user_id] = nil
+        session[:admin] = nil
+
         flash[:success] = "You've logged out!"
         redirect_to root_path
     end
