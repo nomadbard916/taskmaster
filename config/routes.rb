@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   get '/logout', to: "users#logout"
 
   get '/admin', to: "admins#index"
+  get '/admin/view_tasks/:id', to: "admins#view_tasks"
+
+  
+  delete '/admin/delete_task/:id', to: "admins#delete_task"
 
   
 

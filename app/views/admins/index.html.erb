@@ -1,2 +1,61 @@
-<h1>Admins#index</h1>
-<p>Find me in app/views/admins/index.html.erb</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row" id="users-titlebar">
+            <div class="col-4" id="user-name">User Name</div>
+            <div class="col-3" id="join-time">Join Time</div>
+            <div class="col-2" id="task-counts">Task Counts</div>
+            <div class="col-3" id="action">Action</div>
+        </div>
+        <hr style="color:#304d7c">
+
+
+        <% @users.each do |u| %>
+        <div class="row" id="info">
+            <div class="col-4" id="name">
+                <%= u.name%>
+            </div>
+            <div class="col-3" id="joined">
+                <%= u.created_at%>
+            </div>
+            <div class="col-2" id="task-count">
+                <%= Task.where(user_id: u.id).count %>
+            </div>
+            <div class="col-3" id="buttons">
+                <button class="btn btn-primary text-white" id="see-tasks">
+                    <%= link_to 'See Tasks', "admin/view_tasks/#{u.id}",
+                     class: "text-white" %>
+                </button>
+
+                <button class="btn btn-danger text-white" id="delete-user">
+                    <%= link_to 'Delete User', 
+                    user_path(u), method: :delete, 
+                    data: {confirm: "Are you sure? \nThis can't be undone."}, class: "text-white" %>
+                </button>
+
+            </div>
+
+        </div>
+        <hr>
+        <%end%>
+
+
+
+
+
+    </div>
+
+
+
+</body>
+
+</html>

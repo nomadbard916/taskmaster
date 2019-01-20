@@ -43,13 +43,16 @@ class UsersController < ApplicationController
 
     def destroy
         
-        
         @user.destroy
 
-        session[:user_id] = nil
-
-        flash[:success] = 'User was successfully deleted.'
-        redirect_to  root_path
+        if session[:admin]
+            flash[:success] = 'User was successfully deleted.'
+            redirect_to  admin_path
+        else
+            session[:user_id] = nil
+            flash[:success] = 'User was successfully deleted.'
+            redirect_to  root_path
+        end
         
     end
     
@@ -66,6 +69,8 @@ class UsersController < ApplicationController
                 #TODO: implement admin login
                 session[:user_id] = user.id
                 session[:admin] = true
+
+                flash[:success] = "You've logged in as admin #{user.name}!"
                 redirect_to admin_path
             else
             session[:user_id] = user.id

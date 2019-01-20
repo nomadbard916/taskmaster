@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row justify-content-between ">
+
+
+
+
+            <div id="sorter">
+
+                <!-- TODO: Admin has fewer viewing options for now, that's pretty reasonable. Implement it if there's still time...
+                <span class="">Sort by:</span>
+                <br>
+                <%= link_to 'Task Content', tasks_path(condition: "Content") %> |
+                <%= link_to 'Deadline', tasks_path(condition: "deadline") %> |
+                <%= link_to 'Priority', tasks_path(condition: "priority") %> |
+                <%= link_to 'Status', tasks_path(condition: "status") %>
+                <% if @any_finished %>
+                <%= link_to ' | Finished Time', tasks_path(condition: "finished_at") %>
+                <% end%>
+                -->
+
+
+
+
+
+            </div>
+
+            <!-- TODO: Admin has fewer viewing options for now, that's pretty reasonable. Implement it if there's still time...
+        
+        
+
+            <span class="dropdown" data-turbolinks="false">
+                <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown">
+                    ALL TASKS
+                </button>
+
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">ALL TASKS</a>
+                    <a class="dropdown-item" href="#">TASK TAGS</a>
+
+                </div>
+            </span>
+            -->
+
+
+
+
+        </div>
+        <br>
+        <br>
+        <br>
+
+
+
+        <!-- Tasks info -->
+        <%= render 'tasks/tasks_info' %>
+
+
+        <%= render 'tasks/index_form', tasks: @tasks %>
+
+
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>
