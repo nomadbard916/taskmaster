@@ -8,18 +8,23 @@
 
 <div class="row">
     <div id="content" class="col-5">
-        <span>
+        <span id="task-content">
             *
             <%= t.content%>
         </span>
         <br>
 
-        <% task_tags = @tags.where(task_id: t.id)%>
-        <% task_tags.each do |tag| %>
-        <span class="badge badge-success">
-            <%= tag.content %> &nbsp
+        <span id="tag-content">
+
+            <% task_tags = tags.where(task_id: t.id)%>
+            <% task_tags.each do |tag| %>
+            <span class="badge badge-success">
+                <%= tag.content %> &nbsp
+            </span>
+            <% end %>
+
         </span>
-        <% end %>
+
     </div>
 
     <div class="col-2">
@@ -34,14 +39,19 @@
                         data: {confirm: "Are you sure? \nThis can't be undone."}  %>
             </button>
 
-            <% else %>
+            <%else%>
+            <!-- Disable tagging for admin-->
             <button class="btn btn-success btn-sm">
                 <%= link_to 'Tagging', task_tags_path(t), class: "text-white"  %>
             </button>
+            <%end%>
+
+            <% if !session[:admin]%>
             <button class="btn btn-primary btn-sm">
                 <%= link_to 'Edit Task', edit_task_path(t), class: "text-white" %>
             </button>
-            <%end%>
+            <% end %>
+
 
 
         </span>

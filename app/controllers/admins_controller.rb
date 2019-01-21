@@ -30,6 +30,7 @@ class AdminsController < ApplicationController
         # Condition for if any task is finished
         @any_finished = @tasks.find_by(status: "Finished")
 
+        @tags= Tag.all
     
 
   end

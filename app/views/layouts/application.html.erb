@@ -35,7 +35,9 @@
 
 
         <!--FIXME: make it form_for with text_field and submit (hidden)-->
+        <% if !session[:admin]%>
         <input type="text" size="35" placeholder="Type and press 'Enter' to search tasks" class="form-control-sm">
+        <%end%>
 
         <!-- Flash is placed in application layout to just implement once -->
         <% if flash[:success] %>
