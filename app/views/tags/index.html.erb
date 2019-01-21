@@ -7,7 +7,7 @@
         <%= form_for [@task, @tag] do |f| %>
         <fieldset>
             <%= f.text_field :content, placeholder: "maximum 16 characters" %>
-            <%= f.submit %>
+            <%= f.submit "Create tag",class:"btn btn-primary btn-sm" %>
         </fieldset>
         <% end %>
     </div>
@@ -15,9 +15,35 @@
     <hr>
     <div class="row">
         <h5>Tags for this task:</h5>
+        <br>
+
     </div>
 
+    <% @tags.each do |t| %>
+    <div class="row">
+        <p class="badge badge-success">
+
+            <%= t.content%>
+
+        </p>
+
+        <p>
+            &nbsp
+            <%= link_to 'Delete Tag', task_tag_path(id: t.id), method: :delete %>
+        </p>
+
+    </div>
+    <% end%>
+
     <br>
+
+    <div class="row">
+        <button class="btn btn-secondary btn-sm">
+            <%= link_to 'Back', root_path %>
+        </button>
+    </div>
+
+
 
 
 </div>

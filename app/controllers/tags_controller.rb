@@ -4,22 +4,34 @@ class TagsController < ApplicationController
     
     # This index action actually does tags indexing and showing
     def index
-        @tags = Tag.all
+        @tags = Tag.where(task_id: @task.id)
         #tag.where...
         @tag = Tag.new
 
     end
 
     def create
-        @tag = @task.tags.create(tag_params[:content])
+        @tag = @task.tags.create(tag_params)
         if @tag.save
           flash[:success] = "Tag successfully created"
           redirect_back fallback_location: root_path
         else
-          flash[:error] = "Something went wrong"
+          flash[:error] = "Tag content can't be longer than 16 characters"
           redirect_back fallback_location: root_path
         end
     end
+
+    def  destroy
+        @tag = Tag.find(params[:id])
+        if @tag.destroy
+            flash[:success] = 'Tag was successfully deleted.'
+            redirect_back fallback_location: root_path
+        else
+            flash[:error] = 'Something went wrong'
+            redirect_back fallback_location: root_path
+        end
+    end
+    
     
 
     
