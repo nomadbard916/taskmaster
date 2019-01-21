@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
-  get 'admins/index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
+  
+  
 
   root  to: 'tasks#index'
 
-  resources :tasks
+  resources :tasks do
+    resources :tags, only: [:index, :create, :destroy]
+    # show and new on same page, no need to update
+  end
 
-  resources :users
+  resources :users 
 
   get '/login', to: "users#login_page"
   post '/login', to: "users#login"
@@ -17,6 +21,8 @@ Rails.application.routes.draw do
 
   
   delete '/admin/delete_task/:id', to: "admins#delete_task"
+
+  
 
   
 

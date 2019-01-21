@@ -7,22 +7,32 @@
 
 
 <div class="row">
-    <div id="content" class="col-6">
+    <div id="content" class="col-5">
         <%= t.content%>
+        <br>
 
-        <span id="buttons" class="float-right">
+        <span class="badge badge-success">
+            Tags
+        </span>
+    </div>
+
+    <div class="col-2">
+        <span id="buttons" class="pull-right">
 
 
             <!-- Admin can delete tasks only; how could tasks be modified by a different role? -->
             <% if session[:admin]%>
-            <button class="btn btn-danger">
+            <button class="btn btn-danger btn-sm">
                 <%= link_to 'Delete', {controller:"admins", action:"delete_task", id: t.id}, method: :delete,
                 class:"text-white",
                 data: {confirm: "Are you sure? \nThis can't be undone."}  %>
             </button>
             <% else %>
-            <button class="btn btn-success">
-                <%= link_to 'Edit', edit_task_path(t), class: "text-white" %>
+            <button class="btn btn-primary btn-sm">
+                <%= link_to 'Edit Task', edit_task_path(t), class: "text-white" %>
+            </button>
+            <button class="btn btn-success btn-sm">
+                <%= link_to 'Tagging', task_tags_path(t), class: "text-white"  %>
             </button>
             <%end%>
 
@@ -30,8 +40,8 @@
         </span>
     </div>
 
-    <div id="deadline" class="col-3">
-        <%= t.deadline%>
+    <div id="deadline" class="col-2">
+        <%= t.deadline.strftime('%Y-%m-%e %H:%M')%>
     </div>
 
     <div id="priority" class="col-1">
@@ -47,7 +57,7 @@
         <p id="finished-time" class="text-success">
             Finished time:
             <br>
-            <%= t.finished_at%>
+            <%= t.finished_at.strftime('%Y-%m-%e %H:%M') %>
         </p>
         <% end %>
 
