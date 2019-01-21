@@ -36,7 +36,15 @@
       </div>
 
 
+      <% if !session[:admin]%>
+      <span>
+        <%= form_tag search_results_path, method: :get do %>
+        <%= text_field_tag "keyword", nil, placeholder: "Type and 'Enter' to search for task contents or tags", class:"form-control-sm", size:"45" %>
+        <% submit_tag "Invisible submit" %>
+      </span>
+      <% end %>
 
+      <%end%>
 
 
 

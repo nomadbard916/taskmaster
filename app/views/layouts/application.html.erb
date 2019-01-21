@@ -17,10 +17,7 @@
     <div class="container ">
 
       <!-- Left part -->
-      <div>
-
-
-
+      <div id="branding-search">
 
         <span id="brand" class="navbar-brand">
           <!-- Switch admin mode -->
@@ -35,10 +32,9 @@
 
 
         <!--FIXME: make it form_for with text_field and submit (hidden)-->
-        <% if !session[:admin]%>
 
-        <input type="text" size="45" placeholder="Type and 'Enter' to search for task contents or tags" class="form-control-sm">
-        <%end%>
+
+
 
         <!-- Flash is placed in application layout to just implement once -->
         <% if flash[:success] %>
@@ -60,12 +56,9 @@
 
 
 
+
       <!-- Right part-->
       <div id="util" class="float-right">
-
-
-
-
 
         <span id="account">
           <!-- Sign up, should switch to "edit account" when logged in-->
@@ -78,9 +71,6 @@
             <%= link_to 'Sign up', new_user_path %>
           </button>
           <% end %>
-
-
-
 
           <!-- Login, should switch to "Log out" when logged-in -->
           <% if session[:user_id] ==  nil %>

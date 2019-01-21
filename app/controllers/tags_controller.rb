@@ -5,7 +5,7 @@ class TagsController < ApplicationController
     # This index action actually does tags indexing and showing
     def index
         @tags = Tag.where(task_id: @task.id)
-        #tag.where...
+        
         @tag = Tag.new
 
     end
@@ -15,6 +15,7 @@ class TagsController < ApplicationController
         
 
         if @tag.save
+            # FIXME: Problematic but feasible implementation, should find some method to deal with association with both task and user when creating tag object.
           @tag.update_attributes(user_id: session[:user_id])
           flash[:success] = "Tag successfully created"
           redirect_back fallback_location: root_path

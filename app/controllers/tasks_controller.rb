@@ -51,14 +51,14 @@ class TasksController < ApplicationController
     
     def create
         @task = @user.tasks.create(task_params)
-        #FIXME: need to put ".save" to model
+        
         
         
         if @task.save
           flash[:success] = "Task successfully created"
           redirect_to root_path
         else
-          flash[:error] = "Task content must exist and can't be longer than 256 characters."
+          flash[:error] = "Task content must exist and can't be longer than 256 characters or empty."
           render 'new'
         end
     end
@@ -108,6 +108,37 @@ class TasksController < ApplicationController
     end
 
     def search_results
+        # It's ok to be without strong params as its for reading data only.
+
+        # Find task contents by keyword
+        @keyword = params[:keyword]
+
+        @task_results = Task.where(["content LIKE ? AND user_id = ? ", "%#{@keyword}%", "#{session[:user_id]}"])
+
+        # Find tasks with tag content containing keyword
+
+        # set an empty array for storing results later
+        @by_tag_results = []
+
+        # Find tags by keyword first
+        tag_results = Tag.where(["content LIKE ? AND user_id = ? ", "%#{params[:keyword]}%", "#{session[:user_id]}"])
+
+        # set an empty array to store tag names later
+        result_tags = []
+
+        tag_results.each do |t|
+            result_tags.push("#{t.content}")
+        end
+
+
+        result_tags.each do |t|
+            tag = Tag.find_by(content: t)
+            resulting_task = Task.find_by(id: tag.task_id)
+            @by_tag_results.push(resulting_task)
+        end
+
+        
+
 
     end
 

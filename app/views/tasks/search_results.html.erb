@@ -1,0 +1,140 @@
+<div class="container">
+
+
+    <h3>
+        Tasks with content:
+        <%= @keyword %>
+    </h3>
+
+
+
+
+    <p class="row">
+        <p id="search-content-result">
+            <% if @task_results.empty? %>
+            <%= "No result found" %>
+            <% else%>
+            <% @task_results.each do |t| %>
+            <p>
+                <span class="text-info">
+                    Task:
+                </span>
+                <br>
+                <span>
+                    <%= t.content %>
+                </span>
+                <br>
+                <span>
+                    Deadline:
+                    <%= t.deadline.strftime("%Y-%M-%d %R") %>
+                </span>
+                <br>
+                <span>
+                    Status:
+                    <%= t.status %>
+                </span>
+                <br>
+                <span>
+                    Priority:
+                    <%= t.priority %>
+                </span>
+                <br>
+                <span>
+                    <% task_tags = Tag.where(task_id: t.id) %>
+                    Tags:
+                    <% if task_tags.empty? %>
+                    <span>
+                    </span>
+                    <% else%>
+                    <% task_tags.each do |tag| %>
+                    <span class="badge badge-success">
+                        <span>
+                            <%= tag.content %>
+                        </span>
+
+                    </span>
+                    <span>&nbsp</span>
+                    <%end%>
+                    <%end%>
+                </span>
+
+            </p>
+            <br>
+            <% end %>
+
+
+            <% end %>
+
+        </p>
+    </p>
+
+
+
+    <hr>
+
+
+    <h3>
+        Tasks with tag:
+        <%= @keyword %>
+    </h3>
+
+    <p class="row">
+        <p id="search-tag-result">
+            <% if @by_tag_results.empty? %>
+            <%= "No result found" %>
+            <br><br><br>
+            <% else %>
+            <% @by_tag_results.each do |r| %>
+            <p>
+                <span class="text-info">
+                    Task:
+                </span>
+                <br>
+                <span>
+                    <%= r.content %>
+                </span>
+                <br>
+                <span>
+                    Deadline:
+                    <%= r.deadline.strftime("%Y-%M-%d %R") %>
+                </span>
+                <br>
+                <span>
+                    Status:
+                    <%= r.status %>
+                </span>
+                <br>
+                <span>
+                    Priority:
+                    <%= r.priority %>
+                </span>
+                <br>
+                <span>
+                    <% task_tags = Tag.where(task_id: r.id) %>
+                    Tags:
+                    <% if task_tags.empty? %>
+                    <span>
+                    </span>
+                    <% else%>
+                    <% task_tags.each do |tag| %>
+                    <span class="badge badge-success">
+                        <span>
+                            <%= tag.content %>
+                        </span>
+
+                    </span>
+                    <span>&nbsp</span>
+                    <%end%>
+                    <%end%>
+                </span>
+
+            </p>
+            <br>
+            <% end %>
+            <%end%>
+        </p>
+    </p>
+
+
+
+</div>
