@@ -8,12 +8,18 @@
 
 <div class="row">
     <div id="content" class="col-5">
-        <%= t.content%>
+        <span>
+            *
+            <%= t.content%>
+        </span>
         <br>
 
+        <% task_tags = @tags.where(task_id: t.id)%>
+        <% task_tags.each do |tag| %>
         <span class="badge badge-success">
-            Tags
+            <%= tag.content %> &nbsp
         </span>
+        <% end %>
     </div>
 
     <div class="col-2">
@@ -24,15 +30,16 @@
             <% if session[:admin]%>
             <button class="btn btn-danger btn-sm">
                 <%= link_to 'Delete', {controller:"admins", action:"delete_task", id: t.id}, method: :delete,
-                class:"text-white",
-                data: {confirm: "Are you sure? \nThis can't be undone."}  %>
+                        class:"text-white",
+                        data: {confirm: "Are you sure? \nThis can't be undone."}  %>
             </button>
+
             <% else %>
-            <button class="btn btn-primary btn-sm">
-                <%= link_to 'Edit Task', edit_task_path(t), class: "text-white" %>
-            </button>
             <button class="btn btn-success btn-sm">
                 <%= link_to 'Tagging', task_tags_path(t), class: "text-white"  %>
+            </button>
+            <button class="btn btn-primary btn-sm">
+                <%= link_to 'Edit Task', edit_task_path(t), class: "text-white" %>
             </button>
             <%end%>
 

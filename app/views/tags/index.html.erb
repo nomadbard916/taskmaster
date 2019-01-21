@@ -8,6 +8,9 @@
         <fieldset>
             <%= f.text_field :content, placeholder: "maximum 16 characters" %>
             <%= f.submit "Create tag",class:"btn btn-primary btn-sm" %>
+            <button class="btn btn-secondary btn-sm">
+                <%= link_to 'Back', root_path %>
+            </button>
         </fieldset>
         <% end %>
     </div>
@@ -37,11 +40,7 @@
 
     <br>
 
-    <div class="row">
-        <button class="btn btn-secondary btn-sm">
-            <%= link_to 'Back', root_path %>
-        </button>
-    </div>
+
 
 
 

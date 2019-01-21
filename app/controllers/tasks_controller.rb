@@ -17,9 +17,6 @@ class TasksController < ApplicationController
         if session[:user_id].nil?
             @tasks = nil
         else
-            
-            
-
             # Determine how tasks are sorted
             case params[:condition]
             when "content"
@@ -39,9 +36,9 @@ class TasksController < ApplicationController
             # Condition for if any task is finished
             @any_finished = @tasks.find_by(status: "Finished")
 
-            
-
         end
+
+        @tags= Tag.all
 
 
 
