@@ -10,6 +10,7 @@
 User.create(email:"admin@gmail.com", name:"test admin", password: "123", admin: true)
 
 #Write also fake users and tasks
+User.create(email:"test@gmail.com", name:"test user", password: "123")
 
 
 

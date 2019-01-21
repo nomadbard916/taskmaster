@@ -76,15 +76,17 @@ class TasksController < ApplicationController
 
 
     def update
-        if task_params[:status] = "finished"
-            @task.update_attributes(finished_at: Time.now)
-        else
-            @task.update_attributes(finished_at: nil)
-        end
+        
 
 
 
         if @task.update_attributes(task_params)
+            if task_params[:status] == "Finished"
+                @task.update_attributes(finished_at: Time.now)
+            else
+                @task.update_attributes(finished_at: nil)
+            end
+
           flash[:success] = "Task was successfully updated"
           redirect_to root_path
         else
