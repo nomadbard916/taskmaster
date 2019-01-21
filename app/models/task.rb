@@ -3,7 +3,7 @@ class Task < ApplicationRecord
     
 
     belongs_to :user
-    has_many :tags
+    has_many :tags, dependent: :destroy
 
     
 end

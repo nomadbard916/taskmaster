@@ -35,10 +35,11 @@ class TasksController < ApplicationController
 
             # Condition for if any task is finished
             @any_finished = @tasks.find_by(status: "Finished")
-
+            
+            # Limit tags to current user
+            @tags= Tag.where(user_id: session[:user_id])
         end
 
-        @tags= Tag.all
 
 
 
@@ -104,6 +105,10 @@ class TasksController < ApplicationController
             flash[:error] = 'Something went wrong'
             redirect_to tasks_url
         end
+    end
+
+    def search_results
+
     end
 
     

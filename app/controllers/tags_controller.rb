@@ -12,7 +12,10 @@ class TagsController < ApplicationController
 
     def create
         @tag = @task.tags.create(tag_params)
+        
+
         if @tag.save
+          @tag.update_attributes(user_id: session[:user_id])
           flash[:success] = "Tag successfully created"
           redirect_back fallback_location: root_path
         else

@@ -9,17 +9,28 @@
 <hr>
 
 <% if @tasks.blank? %>
+
 <% if session[:user_id].nil? %>
 <p class="text-center">
     <%= "Hey, so glad you are here to keep tasks organized. 
-    " %>
+        " %>
     <br>
     <%= "Please login at upper-right to start using this wonderful companion!" %>
 
 </p>
 <% else %>
+
+
 <p class="text-center">
+    <% if session[:admin]%>
+    <%= "Hey, this user doesn't have any task."%>
+    <br>
+    <%= link_to 'Back', admin_path %>
+
+    <%else%>
     <%= "Hey, let's add some task by clicking the '+ New Task' below!" %>
+    <%end%>
 </p>
 <% end %>
+
 <%end%>

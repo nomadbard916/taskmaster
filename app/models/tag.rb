@@ -1,7 +1,8 @@
 class Tag < ApplicationRecord
-  validates :content, uniqueness: { case_sensitive: false }, length: {maximum: 16}
+  validates :content,  length: {maximum: 16}
   
   
 
   belongs_to :task
+  belongs_to :user
 end

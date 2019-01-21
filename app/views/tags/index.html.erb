@@ -7,9 +7,9 @@
         <%= form_for [@task, @tag] do |f| %>
         <fieldset>
             <%= f.text_field :content, placeholder: "maximum 16 characters" %>
-            <%= f.submit "Create tag",class:"btn btn-primary btn-sm" %>
-            <button class="btn btn-secondary btn-sm">
-                <%= link_to 'Back', root_path %>
+            <%= f.submit "Create tag",class:"btn btn-success btn-sm" %>
+            <button class="btn btn-primary btn-sm ">
+                <%= link_to 'Back', root_path, class:"text-white" %>
             </button>
         </fieldset>
         <% end %>
