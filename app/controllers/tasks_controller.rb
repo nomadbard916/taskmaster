@@ -118,7 +118,7 @@ class TasksController < ApplicationController
         # Find tasks with tag content containing keyword
 
         # set an empty array for storing results later
-        @by_tag_results = []
+        by_tag_results = []
 
         # Find tags by keyword first
         tag_results = Tag.where(["content LIKE ? AND user_id = ? ", "%#{params[:keyword]}%", "#{session[:user_id]}"])
@@ -134,8 +134,11 @@ class TasksController < ApplicationController
         result_tags.each do |t|
             tag = Tag.find_by(content: t)
             resulting_task = Task.find_by(id: tag.task_id)
-            @by_tag_results.push(resulting_task)
+            by_tag_results.push(resulting_task)
         end
+
+        #finally, remove duplicated objects and send them in an instance variable
+        @by_tag_results = by_tag_results.uniq
 
         
 

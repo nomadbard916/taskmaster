@@ -23,6 +23,10 @@
         <div class="row" id="info">
             <div class="col-4" id="name">
                 <%= u.name%>
+                <% if u.admin? %>
+                <span class="badge badge-info">Admin</span>
+                <%end%>
+
             </div>
             <div class="col-3" id="joined">
                 <%= u.created_at%>

@@ -112,19 +112,16 @@
                 <span>
                     <% task_tags = Tag.where(task_id: r.id) %>
                     Tags:
-                    <% if task_tags.empty? %>
-                    <span>
-                    </span>
-                    <% else%>
-                    <% task_tags.each do |tag| %>
+
+                    <% task_tags.each do |g| %>
                     <span class="badge badge-success">
                         <span>
-                            <%= tag.content %>
+                            <%= g.content %>
                         </span>
 
                     </span>
                     <span>&nbsp</span>
-                    <%end%>
+
                     <%end%>
                 </span>
 
@@ -134,6 +131,15 @@
             <%end%>
         </p>
     </p>
+
+    <button class="btn btn-primary ">
+        <%= link_to 'Back', root_path, class:"text-white" %>
+    </button>
+
+    <br>
+    <br>
+    <br>
+
 
 
 

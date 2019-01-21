@@ -50,6 +50,10 @@
     </div>
 
 
+
+
+
+
     <button class="btn btn-secondary">
         <%= link_to 'Back', root_path %>
     </button>
@@ -63,6 +67,10 @@
 
     <%end%>
 
+    <% if session[:admin] %>
+    <%= f.check_box :admin %>
+    <span>Make this user admin</span>
+    <%end%>
 
 
 </fieldset>
