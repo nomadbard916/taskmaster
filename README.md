@@ -59,6 +59,8 @@ I'm alone and no one to review my PR : (
 At least the app works. I know the importance of TDD or BDD to ensure app quality without the haste to check it manually, but let's skip it for now. I promise I'll learn it ASAP when I have the job.
 - i18n
 Hum... as this app has English only, let's just skip it.
+- n+1 query
+I'll study SQL to be a good backend, but let's just deliver the project ASAP for now.
 - model callback to ensure there's at least one admin
 Hey I've actually done it, without model callback. An admin can see all the account except for "his own", therefore he cannot delete his own account, leaving at least one admin account in the system.
 
