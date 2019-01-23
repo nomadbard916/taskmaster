@@ -31,6 +31,35 @@ Quick Start:
 
 Project Specs:
 
----
+Project Specs:
 
-Definition of "User":
+Ruby version: 2.6.0
+Rails version: 5.2.2 
+Development system: Windows 10  + Ubuntu 16.04 (WSL) 
+Editor: Visual Studio Code 
+Production server: Heroku
+
+Rails configurations:
+
+- webpacker
+- Bootstrap-sass
+- DB: PostgreSQL
+- template language: erb
+
+
+---
+Next-stage plans:
+As I wanted to finish the project as soon as possible, there are some functionalities mentioned in the instruction yet I didn't implement, or that should be done but skipped. If I need to do some improvements to the project or practice more stuff, they should be as below mentioned:
+
+- password encryption
+Yes it's very basic for an app with account functionality, and I know the password should be kept secure by using bcrypt or has_secure_password. Let's just skip it to save some time...
+- Github PR
+I'm alone and no one to review my PR : (
+- testing, Rspec with BDD and CI
+At least the app works. I know the importance of TDD or BDD to ensure app quality without the haste to check it manually, but let's skip it for now. I promise I'll learn it ASAP when I have the job.
+- i18n
+Hum... as this app has English only, let's just skip it.
+- model callback to ensure there's at least one admin
+Hey I've actually done it, without model callback. An admin can see all the account except for "his own", therefore he cannot delete his own account, leaving at least one admin account in the system.
+
+
